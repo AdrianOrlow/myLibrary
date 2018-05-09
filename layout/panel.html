@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="theme-color" content="#fafafa">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="myLibrary">
+        <meta property="og:description" content="Simple library website">
+        <title>myLibrary</title>
+        
+        <!-- Main CSS -->
+		<!-- <link rel="stylesheet" href="dist/css/style.min.css"/> -->
+		<link rel="stylesheet" href="src/css/style.css"/>
+		
+		<!-- FontAwesome -->
+		<script src="https://use.fontawesome.com/c8c98e0020.js"></script>
+		
+		<!-- Fonts -->
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700,900">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,900"/>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700"/>
+	</head>
+	<body>
+		<header class="header">
+					<div class="header__logo">
+						<h1 class="h1--logo">myLibrary</h1>
+						<h2 class="h2--logo">Admin Panel</h2>
+				</div>
+		</header>
+
+		<main>
+			<div class="main--container">
+				<div class="section">
+					<div class="table--container">
+						<input class="table__input" type='text' placeholder="Search">
+						<table class="table">
+							<thead>
+								<tr>
+									<th>Title</th>
+									<th>Author</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+						
+							<tbody>
+								<tr>
+									<td>Janusz</td>
+									<td>Korwin</td>
+									<td>
+										<i class="icon fa-ellipsis-v"></i>
+										<div class="table__dropdown">
+											<a class="table__dropdown__el" href="#">More</a>
+											<a class="table__dropdown__el" href="#">Edit</a>
+											<a class="table__dropdown__el" href="#">Delete</a>
+										</div>
+									</td>
+								</tr>
+						
+								<tr>
+									<td>Mikke</td>
+									<td>Królem</td>
+									<td><i class="icon fa-ellipsis-v"></i></td>
+								</tr>
+						
+								<tr>
+									<td>Rzeczypospolitej</td>
+									<td>Polskiej</td>
+									<td><i class="icon fa-ellipsis-v"></i></td>
+								</tr>
+							</tbody>
+						</table>
+						<a class="table__button">Add</a>
+					</div>
+					<div class="addbook">
+							<div class="addbook--container">
+								<h1 class="addbook__title">Add book</h1>
+								<form class="addbook__form">
+									<label for="inputTitle" class="addbook__label">Title: </label>
+									<input class="form__el addbook__el" v-model="title" type="text" id="inputTitle" required autofocus>
+									<label for="inputAuthor" class="addbook__label">Author: </label>
+									<input class="form__el addbook__el" v-model="author" type="text" id="inputAuthor" required>
+									<label for="inputImglink" class="addbook__label">Imglink: </label>
+									<input class="form__el addbook__el" v-model="imglink" type="text" id="inputImglink" required>
+									<label for="inputIsbn" class="addbook__label">ISBN: </label>
+									<input class="form__el addbook__el" v-model="isbn" type="text" id="inputIsbn" required>
+									<label for="inputStatus" class="addbook__label">Status: </label>
+									<input class="form__el addbook__el" v-model="status" type="text" id="inputStatus" required>
+									<button class="form__cancel addbook__cancel" type="cancel">Cancel</button>
+									<button class="form__sumbit addbook__sumbit" type="submit">Add</button>
+								</form>
+							</div>
+						</div>
+                </div>
+			</div>
+		</main>
+
+		<footer class="footer footer--bottom">
+				<div class="footer--container">
+					<h1 class="footer--title">
+						© Adrian Orłów, 2018
+					</h1>
+				</div>
+		</footer>
+	</body>
+</html>
