@@ -1,3 +1,22 @@
+<template>
+  <div id="app">
+    <router-view/>
+  </div>
+</template>
+
+<script>
+
+export default {
+  name: 'App',
+  data () {
+    return {
+      user: null
+    }
+  }
+}
+</script>
+
+<style>
 /* Reset */
 
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
@@ -126,7 +145,11 @@ a {
 
     .main--container {
         width: 80%;  
-        margin: 40px auto;
+        margin: 40px auto 6em;
+    }
+
+    .main--white {
+        background: #ffff;
     }
 
 /* Sections */
@@ -183,16 +206,17 @@ a {
     }
 
     .book__title {
-        font-size: 1.5em;
+        font-size: 1.4em;
         font-weight: 700;
         text-align: center;
     }
 
     .book__author {
-        font-size: 1.2em;
+        font-size: 1.1em;
         font-weight: 600;
         font-style: italic;
         line-height: 0em;
+        color: #333;
     }
 
     .book__status {
@@ -209,14 +233,12 @@ a {
     }
 
     .book__cover {
-        width: 55%;
-        height: auto;
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translateX(-50%) translateY(-40%);
-        max-width: 100%;
-        max-height: 100%;
+        width: 7em;
+        height: auto;
     }
 
 /* Login Form */
@@ -325,6 +347,7 @@ a {
 
     tr {
         transition: ease-in-out 0.2s;
+        background: #fff;
     }
     
     tr:nth-child(even) {
@@ -383,22 +406,26 @@ a {
         display: block;
     }
 
-/* Admin Panel AddBook */
+/* Admin Panel popup */
 
-    .addbook {
+    .popup {
         background: #f5f5f5;
         width: 28em;
-        height: 34.6em;
+        height: auto;
         position: absolute;
         top: 14.6em;
         padding: 2em;
     }
 
-    .addbook--container {
+    .popup--small {
+        height: auto;
+    }
+
+    .popup--container {
         padding: 0 1.2em;
     }
 
-    .addbook__title {
+    .popup__title {
         font-size: 1.5em;
         font-weight: 600;
         display: flex;
@@ -407,7 +434,7 @@ a {
         margin-bottom: 1.2em;
     }
 
-    .addbook__el {
+    .popup__el {
         display: block;
         margin-right: 0;
         margin-left: auto;
@@ -417,7 +444,24 @@ a {
         width: 11.2em;
     }
 
-    .addbook__label {
+        .popup__el--center {
+            text-align: center;
+        }
+
+        .popup__select {
+            width: 13.2em;
+        }
+
+select option:checked:after {
+    content: attr(title);
+    background: #666;
+    color: #fff;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    border: none;
+}
+    .popup__label {
         float: left;
         line-height: 2.75em;
         font-size: 1.25em;
@@ -469,10 +513,11 @@ a {
         height: 10vh;
         font-size: 1.2em;
         bottom: 0;
+        z-index: -10;
     }
 
         .footer--bottom {
-            position: absolute;
+            position: fixed;
         }
 
         .footer--container {
@@ -494,9 +539,102 @@ a {
         .footer--link {
             text-transform: uppercase;
             font-weight: 600;
-            font-size: 0.9em;
+            cursor: pointer;
+            padding: 0.7em;
+            color: #fafafa;
+            background: #333;
+            font-size: 0.8em;
+            border-radius: 1em;
+            transition: ease-in-out 0.2s;
         }
 
         .footer--link:hover {
-            border-bottom: 3px solid #333;
+            background: #444;
         }
+        
+        .footer--link:active {
+            background: #222;
+        }
+
+
+
+        /* Mobile */
+
+        @media only screen and (max-width: 768px) {
+            .main--container {
+                width: 100%;
+                margin: 40px auto 6em;
+            }
+
+            .section--search {
+                position: sticky;
+                top: 1em;
+                z-index: 10;
+            }
+
+            .section--search:sticky {
+                background: #333;
+            }
+
+            .search__input {
+                width: 70vw;
+                font-size: 2em;
+            }
+
+            .table__input {
+                padding: 1em 4vw;
+                width: 92vw;
+                position: sticky;
+                top: 0;
+                z-index: 20;
+            }
+
+            .table {
+                width: 100vw;
+                z-index: 10;
+            }
+
+            .table__button {
+                width: 92vw;
+                padding: 4vw;
+            }
+
+            .table__dropdown {
+                margin: 1em 0 0 0em;
+                right: 0;
+            }
+
+            .popup {
+                width: 100vw;
+                padding: 2em 0;
+            }
+
+            .footer {
+                width: 80vw;
+                padding: 0 10vw;
+            }
+        }
+
+        
+
+        @media only screen and (max-width: 1100px) {
+            .section--books {
+                grid-template-columns: auto auto;
+            }
+        }
+
+         @media only screen and (min-width: 767px) and (max-width: 1300px) {
+            .footer {
+                width: 80vw;
+                padding: 0 10vw;
+            }
+         }
+
+        @media only screen and (max-width: 500px) {
+            .section--books {
+                grid-template-columns: auto;
+            }
+        }
+
+        
+</style>
