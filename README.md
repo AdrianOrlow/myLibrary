@@ -2,7 +2,7 @@
 
 ### myLibrary is the simple library catalog with admin panel, made with VueJS, NodeJS and Firebase.
 
-Project demo is available at: https://bit.ly/2k4Dsyx (login: zvpsbpmf@q.cb, password: SJZB4Agw).
+Project demo is available at: https://bit.ly/2KAgE55 (login: zvpsbpmf@q.cb, password: SJZB4Agw).
 
 # Getting started
 
